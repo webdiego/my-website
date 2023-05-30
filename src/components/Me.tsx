@@ -35,7 +35,7 @@ export default function Me() {
         </motion.div>
         <p className="text-xs pt-2">You can throw me away ⤴</p>
         <div>
-          <h1 className="text-4xl mt-4 font-bold animate-text bg-gradient-to-r from-orange-500 via-purple-400  to-blue-400 bg-clip-text py-1 text-transparent">
+          <h1 className="text-4xl mt-4 font-bold animate-text bg-gradient-to-r from-orange-500 via-purple-400  to-blue-400 bg-clip-text py-1 text-transparent tracking-tighter">
             Diego Massarini
           </h1>
           <div>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function Contacts() {
   return (
     <div className="my-10">
-      <h2 className="font-semibold text-xl">Contacts</h2>
+      <h2 className="font-semibold text-2xl tracking-tighter">Contacts</h2>
       <p className="text-slate-500">
         I&apos;m always open to new opportunities, feel free to contact me!
       </p>
