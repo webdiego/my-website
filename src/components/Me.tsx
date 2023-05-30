@@ -28,7 +28,7 @@ export default function Me() {
             drag
             dragConstraints={constraintsRef}
             src="./me.jpeg"
-            className="rounded-full absolute"
+            className="rounded-full absolute cursor-grab"
             width={180}
             height={180}
           />
@@ -41,16 +41,19 @@ export default function Me() {
           <div>
             <h2 className="text-lg font-medium">Web | Mobile developer</h2>
             <p className="mt-4">
-              <span className="text-teal-500">✸</span> Weird stuff
+              <span className="text-teal-500">✸</span> Unconventional stuff
             </p>
-            <p className="">
+            <p>
               <span className="text-purple-500">☈</span> Traveler
             </p>
-            <p className="">
+            <p>
               <span className="text-orange-500">✼</span> Nature&apos;s lover
             </p>
-            <p className="">
-              <span className="text-blue-500">ꆜ</span> Father of....no no no, joking
+            <p>
+              <span className="text-blue-500">ꆜ</span> Freaky brain
+            </p>
+            <p>
+              <span className="text-red-500">✤</span> Pizza addicted
             </p>
           </div>
         </div>
