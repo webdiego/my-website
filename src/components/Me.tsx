@@ -1,8 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import Github from '../../public/github.jpeg';
-
+import Github from '@public/github.jpeg';
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 
@@ -20,7 +19,7 @@ export default function Me() {
           <Image
             src={Github}
             className="rounded-full  h-[180px] w-[180px] bg-blue-200 animate-all rotate-360 duration-1000"
-            alt="github profile"
+            alt="Github profile"
           />
         </motion.div>
         <motion.div className="h-[180px] w-[180px] rounded-full" ref={constraintsRef}>
@@ -31,6 +30,7 @@ export default function Me() {
             className="rounded-full absolute cursor-grab"
             width={180}
             height={180}
+            alt="Photo profile"
           />
         </motion.div>
         <p className="text-xs pt-2">You can throw me away ⤴</p>
