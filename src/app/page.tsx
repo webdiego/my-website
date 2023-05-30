@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Me from '@components/Me';
 import Description from '@components/Description';
 import Contacts from '@components/Contacts/index';
-import { ThemeProvider } from 'next-themes';
 
 export default function Home() {
   return (
