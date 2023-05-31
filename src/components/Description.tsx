@@ -14,18 +14,18 @@ export default function Description() {
         to live 😆 ), I 🧡 working remotely.
       </p>
       <p className="mt-2">
-        I&apos;ve been working professionally for last three years mostly in the
+        I&apos;ve been working professionally for the last three years mostly in the
         <span className="font-bold"> Javascript </span> ecosystem; the craziest and most exciting
         one.
       </p>
       <p className="mt-2">
-        I&apos;m mainly focus on the front-end side but I&apos;ve been so much curios also about the
+        I&apos;m mainly focused on the front-end side but I&apos;ve been so curious also about the
         back-end side thanks to <span className="font-bold"> Next.js</span>, my favorite framework,
-        that gave me the possibility to watch outside the my &quot;fence&quot;.
+        that gave me the possibility to watch outside the &quot;fence&quot;.
       </p>
       <p className="mt-2">
-        So my goal is to have a overall knowledge of the web development world, from the front-end
-        to the back-end and start to contribute to open source projects and enjoy the journey.
+        So, my goal is to have an overall knowledge of the web development world, both front-end and
+        back-end aspects and start to contribute to open source projects and enjoy the journey.
       </p>
     </div>
   );
