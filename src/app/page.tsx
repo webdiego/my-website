@@ -16,7 +16,7 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      <div className="flex min-h-screen h-full w-full max-w-7xl mx-auto flex-col items-start px-6 lg:flex-row justify-between lg:px-16 ">
+      <div className="flex min-h-screen h-full w-full max-w-7xl mx-auto flex-col items-start px-6 lg:flex-row justify-between lg:px-16 text-slate-800">
         <Me />
         <div className="lg:mt-10 min-h-screen h-full lg:py-16 flex flex-col w-full lg:w-4/6 lg:px-5 max-w-5xl mr-auto">
           <Description />

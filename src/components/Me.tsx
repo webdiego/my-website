@@ -35,11 +35,11 @@ export default function Me() {
         </motion.div>
         <p className="text-xs pt-2">You can throw me away ⤴</p>
         <div>
-          <h1 className="text-4xl mt-4 font-bold animate-text bg-gradient-to-r from-orange-500 via-purple-400  to-blue-400 bg-clip-text py-1 text-transparent tracking-tighter">
+          <h1 className="text-[40px] mt-4 font-bold animate-text bg-gradient-to-r from-orange-500 via-purple-400  to-blue-400 bg-clip-text py-1 text-transparent  font-lostar">
             Diego Massarini
           </h1>
           <div>
-            <h2 className="text-lg font-medium">Web | Mobile developer</h2>
+            <h2 className="text-lg font-medium text-slate-900 -mt-2">Web | Mobile developer</h2>
             <p className="mt-4">
               <span className="text-teal-500">✸</span> Unconventional stuff
             </p>

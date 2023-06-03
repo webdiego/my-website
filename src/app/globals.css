@@ -14,3 +14,12 @@ body {
   background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
 }
+
+@layer base {
+  @font-face {
+    font-family: 'lostar';
+    font-display: swap;
+    font-weight: normal;
+    src: url('/fonts/Lostar.woff2');
+  }
+}
