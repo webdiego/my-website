@@ -40,21 +40,30 @@ export default function Me() {
           </h1>
           <div>
             <h2 className="text-lg font-medium text-slate-900 -mt-2">Web | Mobile developer</h2>
-            <p className="mt-4">
-              <span className="text-teal-500">✸</span> Unconventional stuff
-            </p>
-            <p>
-              <span className="text-purple-500">☈</span> Traveler
-            </p>
-            <p>
-              <span className="text-orange-500">✼</span> Nature&apos;s lover
-            </p>
-            <p>
-              <span className="text-blue-500">ꆜ</span> Freaky brain
-            </p>
-            <p>
-              <span className="text-red-500">✤</span> Pizza addicted
-            </p>
+            <div className="flex items-center mt-4">
+              <Image src="/shapes/01.svg" width={20} height={20} alt="Brazil" />
+              <p className="ml-2">Unconventional stuff</p>
+            </div>
+            <div className="flex items-center ">
+              <Image src="/shapes/02.svg" width={20} height={20} alt="Brazil" />
+              <p className="ml-2">Traveler</p>
+            </div>
+            <div className="flex items-center ">
+              <Image src="/shapes/03.svg" width={20} height={20} alt="Brazil" />
+              <p className="ml-2">Nature&apos;s lover</p>
+            </div>
+            <div className="flex items-center ">
+              <Image src="/shapes/06.svg" width={20} height={20} alt="Brazil" />
+              <p className="ml-2">Music devotee</p>
+            </div>
+            <div className="flex items-center ">
+              <Image src="/shapes/04.svg" width={20} height={20} alt="Brazil" />
+              <p className="ml-2">Freaky brain</p>
+            </div>
+            <div className="flex items-center ">
+              <Image src="/shapes/05.svg" width={20} height={20} alt="Brazil" />
+              <p className="ml-2">Pizza addicted</p>
+            </div>
           </div>
         </div>
       </div>
