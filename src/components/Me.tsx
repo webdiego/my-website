@@ -7,7 +7,14 @@ import { motion } from 'framer-motion';
 
 export default function Me() {
   const constraintsRef = useRef(null);
-
+  const FADE_UP_ANIMATION_VARIANTS = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { type: 'spring' } },
+  };
+  const blur = {
+    hidden: { filter: 'blur(10px)', opacity: 0 },
+    visible: { filter: 'blur(0px)', opacity: 1 },
+  };
   return (
     <div className="sticky flex max-w-full flex-col lg:sticky lg:top-0 lg:mb-0 lg:min-h-screen  lg:overflow-visible py-16  w-full lg:w-2/6">
       <div className="flex flex-1 flex-col">
@@ -35,36 +42,63 @@ export default function Me() {
         </motion.div>
         <p className="text-xs pt-2">You can throw me away ⤴</p>
         <div>
-          <h1 className="text-[40px] mt-4 font-bold animate-text bg-gradient-to-r from-orange-500 via-purple-400  to-blue-400 bg-clip-text py-1 text-transparent  font-lostar">
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 1 }}
+            variants={blur}
+            className="text-[40px] mt-4 font-bold animate-text bg-gradient-to-r from-orange-500 via-purple-400  to-blue-400 bg-clip-text py-1 text-transparent  font-lostar"
+          >
             Diego Massarini
-          </h1>
-          <div>
-            <h2 className="text-lg font-medium text-slate-900 -mt-2">Web | Mobile developer</h2>
-            <div className="flex items-center mt-4">
+          </motion.h1>
+          <motion.h2
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 1, delay: 0.5 }}
+            variants={blur}
+            className="text-lg font-medium text-slate-900 -mt-2"
+          >
+            Web | Mobile developer
+          </motion.h2>
+          <motion.div
+            initial="hidden"
+            animate="show"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              show: {
+                transition: {
+                  staggerChildren: 0.15,
+                },
+              },
+            }}
+          >
+            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center mt-4">
               <Image src="/shapes/01.svg" width={20} height={20} alt="Brazil" />
               <p className="ml-2">Unconventional stuff</p>
-            </div>
-            <div className="flex items-center ">
+            </motion.div>
+            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center ">
               <Image src="/shapes/02.svg" width={20} height={20} alt="Brazil" />
               <p className="ml-2">Traveler</p>
-            </div>
-            <div className="flex items-center ">
+            </motion.div>
+            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center ">
               <Image src="/shapes/03.svg" width={20} height={20} alt="Brazil" />
               <p className="ml-2">Nature&apos;s lover</p>
-            </div>
-            <div className="flex items-center ">
+            </motion.div>
+            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center ">
               <Image src="/shapes/06.svg" width={20} height={20} alt="Brazil" />
               <p className="ml-2">Music devotee</p>
-            </div>
-            <div className="flex items-center ">
+            </motion.div>
+
+            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center ">
               <Image src="/shapes/04.svg" width={20} height={20} alt="Brazil" />
               <p className="ml-2">Freaky brain</p>
-            </div>
-            <div className="flex items-center ">
+            </motion.div>
+            <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center ">
               <Image src="/shapes/05.svg" width={20} height={20} alt="Brazil" />
               <p className="ml-2">Pizza addicted</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </div>
