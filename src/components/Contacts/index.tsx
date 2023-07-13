@@ -1,13 +1,20 @@
+'use client';
 import React from 'react';
 import { contacts } from '../../data/contacts';
 import Image from 'next/image';
+import { blur } from '../../animations';
+import { motion } from 'framer-motion';
 export default function Contacts() {
   return (
-    <div className="my-10">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 1, delay: 2 }}
+      variants={blur}
+      className="my-10"
+    >
       <h2 className="font-semibold text-2xl tracking-tighter">Contacts</h2>
-      <p className="text-slate-500">
-        I&apos;m always open to new opportunities, feel free to contact me!
-      </p>
+      <p className="text-slate-500">I&apos;m always open to new opportunities, feel free to contact me!</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-10  mt-5">
         {contacts.map((contact) => (
           <div
@@ -37,6 +44,6 @@ export default function Contacts() {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
