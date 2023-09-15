@@ -9,9 +9,9 @@ export default function Description() {
         Hello, my name is <span className="font-bold">Diego</span> and I&apos;m an Italian web and mobile developer.
       </p>
       <p className="mt-2 ">
-        I&apos;m currently based in <span className="font-bold">Madrid </span>
-        and I&apos;ve also lived in <span className="font-bold">Australia </span> and
-        <span className="font-bold"> New Zealand </span> in the past years ( I don&apos;t know where to live 😆 ), I 🧡
+        I&apos;m currently based in <span className="font-bold">Milan </span>
+        and I&apos;ve also lived in <span className="font-bold">Australia, Spain </span> and
+        <span className="font-bold"> New Zealand </span> in the past years and I 🧡
         working remotely.
       </p>
       <p className="mt-2">
