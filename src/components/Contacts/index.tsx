@@ -2,8 +2,9 @@
 import React from 'react';
 import { contacts } from '../../data/contacts';
 import Image from 'next/image';
-import { blur } from '../../animations';
+import { blur } from '@animations/index';
 import { motion } from 'framer-motion';
+
 export default function Contacts() {
   return (
     <motion.div

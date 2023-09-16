@@ -1,7 +1,9 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { blur } from '../animations';
+import { blur } from '@animations/index';
+
+
 export default function Description() {
   return (
     <motion.div initial="hidden" animate="visible" transition={{ duration: 1, delay: 1.5 }} variants={blur}>
