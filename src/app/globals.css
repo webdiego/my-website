@@ -11,15 +11,23 @@
 html,
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
     rgb(var(--background-start-rgb));
 }
 
 @layer base {
   @font-face {
-    font-family: 'lostar';
+    font-family: "lostar";
     font-display: swap;
     font-weight: normal;
-    src: url('/fonts/Lostar.woff2');
+    src: url("/fonts/Lostar.woff2");
   }
+}
+
+.tech-icon {
+  @apply w-12 h-12 text-gray-900;
 }

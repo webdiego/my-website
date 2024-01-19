@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { blur } from "@animations/index";
-import { Carousel } from "@trendyol-js/react-carousel";
-export default function index() {
+import { Carousel, ScrollingCarousel } from "@trendyol-js/react-carousel";
+import { dataTech } from "../../data/technologies";
+
+export default function Technologies() {
   return (
     <motion.div
       initial="hidden"
@@ -14,16 +15,18 @@ export default function index() {
       className="my-10"
     >
       <h2 className="font-semibold text-2xl tracking-tighter">Tech stack</h2>
-      <p className="text-slate-500">
-        These are some Technologies I&apos;ve used
-      </p>
+      <p className="text-slate-500">These are some technologies I use</p>
       <div className="w-full mt-5">
-        <Carousel show={3.5} slide={4} swiping={true} transition={0.5}>
-          <div className="w-44 h-44 bg-red-200 ">h</div>
-          <div className="w-44 h-44 bg-red-600">h</div>
-          <div className="w-44 h-44 bg-red-700 ">h</div>
-          <div className="w-44 h-44 bg-red-800 ">h</div>
-        </Carousel>
+        <ScrollingCarousel>
+          {dataTech.map((item, index) => (
+            <div
+              key={index}
+              className={`w-24 h-24 ${item.background} rounded-md flex items-center justify-center mr-10`}
+            >
+              {item.icon}
+            </div>
+          ))}
+        </ScrollingCarousel>
       </div>
     </motion.div>
   );
