@@ -31,3 +31,70 @@ body {
 .tech-icon {
   @apply w-12 h-12 text-gray-900;
 }
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(30deg);
+  }
+  80% {
+    transform: translateX(-100%) translateY(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(30deg);
+  }
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.box--gradient {
+  display: flex;
+  height: 100px;
+  margin: 0 10px;
+  position: relative;
+  width: 100px;
+  z-index: 0;
+  overflow: hidden;
+
+  p {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
+    font-size: 30px;
+  }
+
+  &:after {
+    content: "";
+    top: 0;
+    transform: translateX(100%) rotate(30deg);
+    width: 300%;
+    height: 300%;
+    position: absolute;
+    z-index: 1;
+    animation: shine 3s infinite ease-in;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(128, 186, 232, 0) 99%,
+      rgba(128, 186, 232, 0) 100%
+    );
+  }
+  &.silver {
+    background: linear-gradient(to bottom, #bcc6cc, #eee, #bcc6cc);
+  }
+
+  &.platinum {
+    background: linear-gradient(to bottom, #d5d7e5, #eee, #d5d7e5);
+    &:after {
+      animation-delay: 2s;
+    }
+  }
+}

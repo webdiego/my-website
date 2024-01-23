@@ -6,6 +6,7 @@ import { Carousel, ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { dataTech } from "../../data/technologies";
 
 export default function Technologies() {
+  const [showTooltip, setShowTooltip] = React.useState(false);
   return (
     <motion.div
       initial="hidden"
@@ -21,9 +22,23 @@ export default function Technologies() {
           {dataTech.map((item, index) => (
             <div
               key={index}
-              className={`w-24 h-24 ${item.background} rounded-md flex items-center justify-center mr-10`}
+              className="flex flex-col items-center group relative mb-5"
+              onClick={() => setShowTooltip(true)}
             >
-              {item.icon}
+              <div
+                key={index}
+                className={`w-24 h-24 ${item.background} rounded-md flex items-center justify-center mr-10`}
+              >
+                {item.icon}
+              </div>
+              <span className="absolute -bottom-4 scale-0 rounded bg-gray-800 p-1.5 px-1.5 text-xs text-white group-hover:scale-100">
+                {item.name}
+              </span>
+              {showTooltip && (
+                <span className="absolute -bottom-4 scale-0 rounded bg-gray-800 p-1.5 px-1.5 text-xs text-white group-hover:scale-100">
+                  {item.name}
+                </span>
+              )}
             </div>
           ))}
         </ScrollingCarousel>

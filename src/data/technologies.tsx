@@ -13,51 +13,63 @@ import { SiAdobexd } from "react-icons/si";
 
 export let dataTech = [
   {
-    background: "bg-gradient-to-tl from-gray-300 to-transparent",
+    background: "box--gradient platinum",
     icon: <SiNextdotjs className="tech-icon" />,
+    name: "Next.js",
   },
   {
-    background: "bg-gradient-to-tl from-[#5FD3F3] to-transparent",
+    background: "box--gradient platinum",
     icon: <FaReact className="tech-icon" />,
+    name: "React",
   },
   {
-    background: "bg-gradient-to-tl from-[#38BDF9] to-transparent",
+    background: "box--gradient platinum",
     icon: <SiTailwindcss className="tech-icon" />,
+    name: "Tailwind CSS",
   },
   {
-    background: "bg-gradient-to-tl from-[#3ECF8E] to-transparent",
+    background: "box--gradient platinum",
     icon: <RiSupabaseFill className="tech-icon" />,
+    name: "Supabase",
   },
   {
-    background: "bg-gradient-to-tl from-[#2D3748] to-transparent",
+    background: "box--gradient platinum",
     icon: <SiPrisma className="tech-icon" />,
+    name: "Prisma",
   },
   {
-    background: "bg-gradient-to-tl from-[#3078C6] to-transparent",
+    background: "box--gradient platinum",
     icon: <SiTypescript className="tech-icon" />,
+    name: "TypeScript",
   },
   {
-    background: "bg-gradient-to-tl from-[#F7D804] to-transparent",
+    background: "box--gradient platinum",
     icon: <SiJavascript className="tech-icon" />,
+    name: "JavaScript",
   },
   {
-    background: "bg-gradient-to-tl from-pink-300 to-transparent",
+    background: "box--gradient platinum",
     icon: <SiSass className="tech-icon" />,
+    name: "Sass",
   },
   {
-    background: "bg-gradient-to-tl from-[#F57C00] to-transparent",
+    background: "box--gradient platinum",
     icon: <SiFirebase className="tech-icon" />,
+    name: "Firebase",
   },
   {
-    background: "bg-gradient-to-tl from-[#F36458] to-transparent",
+    background: "box--gradient platinum",
     icon: <SiSanity className="tech-icon" />,
+    name: "Sanity",
   },
   {
-    background: "bg-gradient-to-tl from-[#FF61F6] to-transparent",
+    background: "box--gradient platinum",
     icon: <SiFigma className="tech-icon" />,
+    name: "Figma",
   },
   {
-    background: "bg-gradient-to-tl from-[#FF61F6] to-transparent",
+    background: "box--gradient platinum",
     icon: <SiAdobexd className="tech-icon" />,
+    name: "Adobe XD",
   },
 ];
