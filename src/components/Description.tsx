@@ -16,9 +16,10 @@ export default function Description() {
         an Italian web and mobile developer.
       </p>
       <p className="mt-2 ">
-        I&apos;m currently based in <span className="font-bold">Milan </span>
+        I&apos;m currently based in{" "}
+        <span className="font-bold">Australia </span>
         and I&apos;ve also lived in{" "}
-        <span className="font-bold">Australia, Spain </span> and
+        <span className="font-bold">Italy, Spain </span> and
         <span className="font-bold"> New Zealand </span> in the past years and I
         🧡 working remotely.
       </p>
