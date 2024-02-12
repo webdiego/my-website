@@ -3,6 +3,7 @@ import Me from "@components/Me";
 import Description from "@components/Description";
 import Contacts from "@components/Contacts/index";
 import Technologies from "@components/Technologies";
+import Portfolio from "@/components/Portfolio";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -43,6 +44,7 @@ export default function Home() {
         <div className="lg:mt-10 min-h-screen h-full lg:py-16 flex flex-col w-full lg:w-4/6 lg:px-5 max-w-5xl mr-auto">
           <Description />
           <Technologies />
+          {/* <Portfolio /> */}
           <Contacts />
         </div>
       </div>

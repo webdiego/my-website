@@ -25,7 +25,7 @@ export default function Contacts() {
               background: `${contact.background}`,
             }}
             key={contact.name}
-            className={`flex items-start jus mt-2 border-2 rounded-lg px-4 py-5`}
+            className={`flex items-start jus mt-2  rounded-lg px-4 py-5`}
           >
             <Image
               src={contact.image}
