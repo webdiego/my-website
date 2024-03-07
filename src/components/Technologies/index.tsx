@@ -31,11 +31,11 @@ export default function Technologies() {
               >
                 {item.icon}
               </div>
-              <span className="absolute -bottom-4 scale-0 rounded bg-gray-800 p-1.5 px-1.5 text-xs text-white group-hover:scale-100">
+              <span className="absolute -bottom-4 scale-0 rounded bg-gray-800 p-1.5 text-xs text-white group-hover:scale-100">
                 {item.name}
               </span>
               {showTooltip && (
-                <span className="absolute -bottom-4 scale-0 rounded bg-gray-800 p-1.5 px-1.5 text-xs text-white group-hover:scale-100">
+                <span className="absolute -bottom-4 scale-0 rounded bg-gray-800 p-1.5 text-xs text-white group-hover:scale-100">
                   {item.name}
                 </span>
               )}
