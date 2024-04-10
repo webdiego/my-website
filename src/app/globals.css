@@ -7,7 +7,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-/* 
+
 html,
 body {
   color: rgb(var(--foreground-rgb));
@@ -17,7 +17,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-} */
+}
 
 @layer base {
   @font-face {
