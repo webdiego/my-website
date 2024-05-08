@@ -18,9 +18,7 @@ export default function Description() {
       <p className="mt-2 ">
         I&apos;m currently based in{" "}
         <span className="font-bold">Australia </span>
-        and I&apos;ve also lived in <span className="font-bold">
-          Spain{" "}
-        </span>{" "}
+        and I&apos;ve also lived in <span className="font-bold">Spain </span>{" "}
         and
         <span className="font-bold"> New Zealand </span> in the past years and I
         🧡 working remotely.

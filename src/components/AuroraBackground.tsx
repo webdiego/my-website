@@ -18,7 +18,7 @@ export const AuroraBackground = ({
       <div
         className={cn(
           "relative flex flex-colh-screen items-center justify-center bg-zinc-50 dark:bg-zinc-900  text-slate-950 transition-bg",
-          className
+          className,
         )}
         {...props}
       >
@@ -42,7 +42,7 @@ export const AuroraBackground = ({
             pointer-events-none
             absolute -inset-[10px] opacity-50`,
               showRadialGradient &&
-                `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
+                `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`,
             )}
           ></div>
         </div>
