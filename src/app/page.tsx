@@ -4,7 +4,7 @@ import Description from "@components/Description";
 import Contacts from "@components/Contacts/index";
 import Technologies from "@components/Technologies";
 import Portfolio from "@/components/Portfolio";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Diego Massarini - Frontend Developer",
