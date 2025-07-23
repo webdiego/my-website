@@ -15,7 +15,11 @@ export default function Me() {
         <motion.div
           className="absolute"
           animate={{ rotate: 360 }}
-          transition={{ ease: "linear", duration: 5, repeat: Infinity }}
+          transition={{
+            ease: "linear",
+            duration: 5,
+            repeat: Number.POSITIVE_INFINITY,
+          }}
         >
           <Image
             src={Github}
@@ -34,7 +38,7 @@ export default function Me() {
             className="rounded-full absolute cursor-grab"
             width={180}
             height={180}
-            alt="Photo profile"
+            alt="Me"
           />
         </motion.div>
         <p className="text-xs pt-2">You can throw me away ⤴</p>

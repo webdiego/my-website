@@ -21,12 +21,13 @@ export default function Technologies() {
         <ScrollingCarousel>
           {dataTech.map((item, index) => (
             <div
-              key={index}
+              key={item.name}
               className="flex flex-col items-center group relative mb-5"
               onClick={() => setShowTooltip(true)}
+              onKeyDown={() => setShowTooltip(true)}
             >
               <div
-                key={index}
+                key={item.name}
                 className={`w-24 h-24 ${item.background} rounded-md flex items-center justify-center mr-10`}
               >
                 {item.icon}
