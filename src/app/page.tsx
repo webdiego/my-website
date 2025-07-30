@@ -44,7 +44,7 @@ export default function Home() {
         <div className="lg:mt-10 min-h-screen h-full lg:py-16 flex flex-col w-full lg:w-4/6 lg:px-5 max-w-5xl mr-auto">
           <Description />
           <Technologies />
-          {/* <Portfolio /> */}
+          <Portfolio />
           <Contacts />
         </div>
       </div>

@@ -12,7 +12,7 @@ export default function Contacts() {
       animate="visible"
       transition={{ duration: 1, delay: 2 }}
       variants={blur}
-      className="mb-10"
+      className="my-10"
     >
       <h2 className="font-semibold text-2xl tracking-tighter">Contacts</h2>
       <p className="text-slate-500">
