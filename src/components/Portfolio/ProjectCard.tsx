@@ -1,6 +1,6 @@
 import React from "react";
 import { BookDashed } from "lucide-react";
-
+import { Hammer } from "lucide-react";
 export default function ProjectCard({
   title,
   description,
@@ -8,6 +8,7 @@ export default function ProjectCard({
   githubLink,
   tags,
   template = false,
+  wip = false,
 }: {
   title: string;
   description: string;
@@ -15,6 +16,7 @@ export default function ProjectCard({
   githubLink: string;
   tags: string[];
   template?: boolean;
+  wip?: boolean;
 }) {
   return (
     <div className="rounded-md p-5 bg-gradient-to-l from-slate-100  to-slate-200">
@@ -24,6 +26,12 @@ export default function ProjectCard({
           <span className="ml-2 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full flex items-center">
             <BookDashed className="w-4 h-4 mr-1" />
             Template
+          </span>
+        )}
+        {wip && (
+          <span className="ml-2 text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full flex items-center">
+            <Hammer className="w-4 h-4 mr-1" />
+            <span className="text-xs">Work in Progress</span>
           </span>
         )}
       </div>

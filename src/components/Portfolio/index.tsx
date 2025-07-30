@@ -11,6 +11,7 @@ const ProjectsData = [
       "In this project, I created a full-stack application that allows users to share their thoughts and ideas. It features user authentication, a form for creating posts, and a responsive design.",
     link: "https://thoughtz.vercel.app/",
     githubLink: "https://github.com/webdiego/thoughts",
+    wip: false,
     tags: [
       "React",
       "Next.js",
@@ -22,12 +23,34 @@ const ProjectsData = [
     ],
   },
   {
+    title: "Road trip Tracker",
+    description:
+      "In this project, I built a full-stack application that allows users to create a trip and track their expenses.",
+    link: "",
+    githubLink:
+      "https://github.com/webdiego/nextjs-tailwind-typescript-boilerplate",
+    wip: true,
+    tags: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript",
+      "Drizzle ORM",
+      "Turso",
+      "Zod",
+      "React Hook Form",
+      "React Query",
+      "Shadcn UI",
+    ],
+  },
+  {
     title: "next.js-drizzle-turso",
     description:
       "This project is a boilerplate for building Next.js applications with Drizzle ORM and Turso as the database. It provides a solid foundation for developers to start building their applications quickly.",
     link: "https://drizzle-turso.vercel.app/",
     githubLink: "https://github.com/webdiego/next.js-drizzle-turso",
     template: true,
+    wip: false,
     tags: [
       "React",
       "Next.js",
@@ -42,6 +65,7 @@ const ProjectsData = [
     description:
       "This is a website for a restaurant called Alberobello, built with Next.js, Tailwind CSS, and TypeScript. It showcases a modern design and responsive layout and It uses the Notion API to fetch content dynamically for the menu.",
     link: "https://alberobello-restaurant.vercel.app/",
+    wip: false,
     githubLink: "https://github.com/webdiego/alberobello-restaurant",
     tags: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Notion API"],
   },
@@ -62,12 +86,12 @@ export default function Portfolio() {
       </p>
       <div className="mt-4 grid grid-cols-1 gap-4">
         {ProjectsData.map((project) => {
-          const { title, description, link, tags, githubLink, template } =
+          const { title, description, link, tags, githubLink, template, wip } =
             project;
           return (
             <ProjectCard
               key={project.title}
-              {...{ title, description, link, githubLink, tags, template }}
+              {...{ title, description, link, githubLink, tags, template, wip }}
             />
           );
         })}

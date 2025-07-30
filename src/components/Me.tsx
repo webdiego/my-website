@@ -87,7 +87,7 @@ export default function Me() {
                 height={20}
                 alt="Abstract logo"
               />
-              <p className="ml-2">Nature&apos;s lover</p>
+              <p className="ml-2">Outdoor explorer</p>
             </motion.div>
             <motion.div variants={fade_up} className="flex items-center ">
               <Image
@@ -96,7 +96,7 @@ export default function Me() {
                 height={20}
                 alt="Abstract logo"
               />
-              <p className="ml-2">Music devotee</p>
+              <p className="ml-2">Music lover</p>
             </motion.div>
 
             <motion.div variants={fade_up} className="flex items-center ">
@@ -106,7 +106,7 @@ export default function Me() {
                 height={20}
                 alt="Abstract logo"
               />
-              <p className="ml-2">Restless</p>
+              <p className="ml-2">Restless mind</p>
             </motion.div>
             <motion.div variants={fade_up} className="flex items-center ">
               <Image

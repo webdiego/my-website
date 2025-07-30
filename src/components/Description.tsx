@@ -16,12 +16,11 @@ export default function Description() {
         an Italian web and mobile developer.
       </p>
       <p className="mt-2 ">
-        I&apos;m currently based in{" "}
-        <span className="font-bold">Australia </span>
-        and I&apos;ve also lived in <span className="font-bold">Spain </span>{" "}
-        and
-        <span className="font-bold"> New Zealand </span> in the past years and I
-        🧡 working remotely.
+        I&apos;m currently based in <span className="font-bold">Italy </span>
+        and I&apos;ve also lived in <span className="font-bold">Spain </span> ,
+        <span className="font-bold"> New Zealand </span> and in{" "}
+        <span className="font-bold">Australia</span> in the past years and I 🧡
+        working remotely.
       </p>
       <p className="mt-2">
         I&apos;ve been working professionally for the last three years mostly in
