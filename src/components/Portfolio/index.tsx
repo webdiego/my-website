@@ -8,7 +8,7 @@ const ProjectsData = [
   {
     title: "Thoughtz",
     description:
-      "In this project, I created a full-stack application that allows users to share their thoughts and ideas. It features user authentication, a form for creating posts, and a responsive design.",
+      "In this project, I created a full-stack application that allows users to store their thoughts and ideas. It features user authentication, a form for creating posts, and a responsive design.",
     link: "https://thoughtz.vercel.app/",
     githubLink: "https://github.com/webdiego/thoughts",
     wip: false,
@@ -25,7 +25,7 @@ const ProjectsData = [
   {
     title: "Road trip Tracker",
     description:
-      "In this project, I built a full-stack application that allows users to create a trip and track their expenses.",
+      "In this project, I built a full-stack application that allows users to create a trip and track their expenses. I'm implementing user authentication using BetterAuth.",
     link: "",
     githubLink:
       "https://github.com/webdiego/nextjs-tailwind-typescript-boilerplate",
@@ -46,7 +46,7 @@ const ProjectsData = [
   {
     title: "next.js-drizzle-turso",
     description:
-      "This project is a boilerplate for building Next.js applications with Drizzle ORM and Turso as the database. It provides a solid foundation for developers to start building their applications quickly.",
+      "This project is a boilerplate for building Next.js applications with Drizzle ORM and Turso as the database. It provides a basic template to start building their applications quickly.",
     link: "https://drizzle-turso.vercel.app/",
     githubLink: "https://github.com/webdiego/next.js-drizzle-turso",
     template: true,
