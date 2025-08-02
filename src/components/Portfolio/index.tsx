@@ -17,6 +17,7 @@ const ProjectsData = [
       "Next.js",
       "NextAuth / Google OAuth",
       "Tailwind CSS",
+      "React Hook Form",
       "TypeScript",
       "Prisma",
       "Turso",
@@ -26,15 +27,15 @@ const ProjectsData = [
     title: "Road trip Tracker",
     description:
       "In this project, I built a full-stack application that allows users to create a trip and track their expenses. I'm implementing user authentication using BetterAuth.",
-    link: "",
-    githubLink:
-      "https://github.com/webdiego/nextjs-tailwind-typescript-boilerplate",
+    link: "https://roadtrip-tracker.vercel.app/",
+    githubLink: "https://github.com/webdiego/roadtrip",
     wip: true,
     tags: [
       "React",
       "Next.js",
       "Tailwind CSS",
       "TypeScript",
+      "NextAuth / Google OAuth",
       "Drizzle ORM",
       "Turso",
       "Zod",
