@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Diego Massarini - Frontend Developer",
   description:
-    "I'm a Frontend Developer based in Australia, I'm passionate about web development and I love to create beautiful and functional websites. I'm always open to new opportunities, feel free to contact me!",
+    "I'm a Frontend Developer based in Italy, I'm passionate about web development and I love to create beautiful and functional websites. I'm always open to new opportunities, feel free to contact me!",
 };
 
 export default function Home() {

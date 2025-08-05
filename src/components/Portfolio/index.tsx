@@ -6,23 +6,16 @@ import { blur } from "@animations/index";
 import { motion } from "framer-motion";
 const ProjectsData = [
   {
-    title: "Thoughtz",
+    title: "GS Loft",
     description:
-      "In this project, I created a full-stack application that allows users to store their thoughts and ideas. It features user authentication, a form for creating posts, and a responsive design.",
-    link: "https://thoughtz.vercel.app/",
-    githubLink: "https://github.com/webdiego/thoughts",
+      "GS Loft is a mobile app for a gym. It's built with React Native and allows gym members to access their membership information and their workouts.",
+    link: "https://apps.apple.com/it/app/gs-loft/id1585127524",
+    githubLink: null,
     wip: false,
-    tags: [
-      "React",
-      "Next.js",
-      "NextAuth / Google OAuth",
-      "Tailwind CSS",
-      "React Hook Form",
-      "TypeScript",
-      "Prisma",
-      "Turso",
-    ],
+    company: "Blhack",
+    tags: ["React Native", "React Navigation", "GraphQL", "Apollo Client"],
   },
+
   {
     title: "Road trip Tracker",
     description:
@@ -30,6 +23,7 @@ const ProjectsData = [
     link: "https://roadtrip-tracker.vercel.app/",
     githubLink: "https://github.com/webdiego/roadtrip",
     wip: true,
+
     tags: [
       "React",
       "Next.js",
@@ -87,12 +81,29 @@ export default function Portfolio() {
       </p>
       <div className="mt-4 grid grid-cols-1 gap-4">
         {ProjectsData.map((project) => {
-          const { title, description, link, tags, githubLink, template, wip } =
-            project;
+          const {
+            title,
+            description,
+            link,
+            tags,
+            githubLink,
+            template,
+            wip,
+            company,
+          } = project;
           return (
             <ProjectCard
               key={project.title}
-              {...{ title, description, link, githubLink, tags, template, wip }}
+              {...{
+                title,
+                description,
+                link,
+                githubLink,
+                tags,
+                template,
+                wip,
+                company,
+              }}
             />
           );
         })}

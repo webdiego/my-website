@@ -1,5 +1,5 @@
 import React from "react";
-import { BookDashed } from "lucide-react";
+import { BookDashed, Building } from "lucide-react";
 import { Hammer } from "lucide-react";
 import { Github } from "lucide-react";
 import { Globe } from "lucide-react";
@@ -7,6 +7,7 @@ import { Globe } from "lucide-react";
 export default function ProjectCard({
   title,
   description,
+  company,
   link,
   githubLink,
   tags,
@@ -15,8 +16,9 @@ export default function ProjectCard({
 }: {
   title: string;
   description: string;
+  company?: string | null;
   link: string;
-  githubLink: string;
+  githubLink: string | null;
   tags: string[];
   template?: boolean;
   wip?: boolean;
@@ -37,13 +39,19 @@ export default function ProjectCard({
             <span className="text-xs">Work in Progress</span>
           </span>
         )}
+        {company && (
+          <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-1 rounded-md flex items-center">
+            <Building className="w-4 h-4 mr-1" />
+            {company}
+          </span>
+        )}
       </div>
       <p className="text-sm">{description}</p>
 
       <div className="flex flex-wrap mt-2 gap-2">
         {tags.map((tag, index) => (
           <div
-            key={index}
+            key={tag}
             className="bg-slate-400 text-white px-2 py-1 rounded-md text-xs mr-2s"
           >
             {tag}
@@ -51,16 +59,17 @@ export default function ProjectCard({
         ))}
       </div>
       <div className="flex  self-end mt-6">
-        <a
-          href={githubLink}
-          className="text-xs bg-gray-800 text-white rounded-full px-3 py-1  mr-2 flex hover:opacity-90 transition-all transform duration-300 hover:-translate-y-1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="text-xs inline">View on GitHub</span>
-          <Github className="w-4 h-4 ml-1" />
-        </a>
-
+        {githubLink && (
+          <a
+            href={githubLink}
+            className="text-xs bg-gray-800 text-white rounded-full px-3 py-1  mr-2 flex hover:opacity-90 transition-all transform duration-300 hover:-translate-y-1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="text-xs inline">View on GitHub</span>
+            <Github className="w-4 h-4 ml-1" />
+          </a>
+        )}
         <a
           href={link}
           className="text-xs bg-gray-800 text-white rounded-full px-3 py-1 flex hover:opacity-90 transition-all transform duration-300 hover:-translate-y-1"
