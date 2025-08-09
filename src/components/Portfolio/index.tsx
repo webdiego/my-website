@@ -6,9 +6,27 @@ import { blur } from "@animations/index";
 import { motion } from "framer-motion";
 const ProjectsData = [
   {
+    title: "Chat with pdf",
+    description:
+      "In this project, I developed an application that allows users to upload a PDF and ask questions about its content. The application uses the OpenAI API to process and analyze the document.",
+    link: "https://chat-with-pdf-opal.vercel.app//",
+    githubLink: "https://github.com/webdiego/chat-with-pdf",
+    wip: true,
+    tags: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "NextAI SDK",
+      "OpenAi API",
+      "Tailwind CSS",
+      "Shadcn UI",
+    ],
+  },
+
+  {
     title: "GS Loft",
     description:
-      "GS Loft is a mobile app for a gym. It's built with React Native and allows gym members to access their membership information and their workouts.",
+      "GS Loft is a mobile app for a gym, built with React Native. It allows gym members to access their membership details and view their workout plans. This project was developed at Blhack, the company I worked for.",
     link: "https://apps.apple.com/it/app/gs-loft/id1585127524",
     githubLink: null,
     wip: false,
@@ -19,7 +37,7 @@ const ProjectsData = [
   {
     title: "Road trip Tracker",
     description:
-      "In this project, I built a full-stack application that allows users to create a trip and track their expenses. I'm implementing user authentication using BetterAuth.",
+      "In this project, I built a full-stack application that allows users to create trips and track their expenses. I'm implementing user authentication using NextAuth.",
     link: "https://roadtrip-tracker.vercel.app/",
     githubLink: "https://github.com/webdiego/roadtrip",
     wip: true,
