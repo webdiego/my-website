@@ -2,15 +2,16 @@ import LinkedinIcon from "@public/contacts/linkedin.svg";
 import TwitterIcon from "@public/contacts/twitter.svg";
 import GithubIcon from "@public/contacts/github.svg";
 import SoundCloudIcon from "@public/contacts/soundCloud.svg";
+import XIcon from "@public/contacts/x.svg";
 export const contacts = [
   {
-    name: "Twitter",
-    color: "rgb(29, 161, 242)",
-    background: "rgb(29, 161, 242, .1)",
-    image: TwitterIcon,
+    name: "X",
+    color: "rgb(36, 41, 46)",
+    background: "#fff",
+    image: XIcon,
     description: "The place where I post and read random weird/tech stuff",
     button: "Follow me",
-    url: "https://twitter.com/slicecodediego",
+    url: "https://x.com/slicecodediego",
   },
 
   {
