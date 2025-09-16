@@ -4,6 +4,17 @@ import { Hammer } from "lucide-react";
 import { Github } from "lucide-react";
 import { Globe } from "lucide-react";
 
+type ProjectCardProps = {
+  title: string;
+  description: string;
+  company?: string | null;
+  link: string;
+  githubLink: string | null;
+  tags: string[];
+  template?: boolean;
+  wip?: boolean;
+};
+
 export default function ProjectCard({
   title,
   description,
@@ -13,16 +24,7 @@ export default function ProjectCard({
   tags,
   template = false,
   wip = false,
-}: {
-  title: string;
-  description: string;
-  company?: string | null;
-  link: string;
-  githubLink: string | null;
-  tags: string[];
-  template?: boolean;
-  wip?: boolean;
-}) {
+}: ProjectCardProps) {
   return (
     <div className="rounded-md p-5 bg-gradient-to-l from-slate-100  to-slate-200">
       <div className="flex items-center">

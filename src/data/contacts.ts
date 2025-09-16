@@ -1,5 +1,4 @@
 import LinkedinIcon from "@public/contacts/linkedin.svg";
-import TwitterIcon from "@public/contacts/twitter.svg";
 import GithubIcon from "@public/contacts/github.svg";
 import SoundCloudIcon from "@public/contacts/soundCloud.svg";
 import XIcon from "@public/contacts/x.svg";

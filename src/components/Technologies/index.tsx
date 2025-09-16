@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { blur } from "@animations/index";
-import { Carousel, ScrollingCarousel } from "@trendyol-js/react-carousel";
+import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { dataTech } from "../../data/technologies";
 
 export default function Technologies() {
