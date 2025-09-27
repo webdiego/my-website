@@ -5,7 +5,7 @@ export const ProjectsData = [
       "In this project, I developed an application that allows users to upload a PDF and ask questions about its content. The application uses the OpenAI API to process and analyze the document.",
     link: "https://chat-with-pdf-opal.vercel.app//",
     githubLink: "https://github.com/webdiego/chat-with-pdf",
-    wip: true,
+    wip: false,
     tags: [
       "React",
       "Next.js",
