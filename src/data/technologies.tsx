@@ -1,15 +1,3 @@
-import { FaReact } from "react-icons/fa";
-import { RiSupabaseFill } from "react-icons/ri";
-import { SiNextdotjs } from "react-icons/si";
-import { SiTailwindcss } from "react-icons/si";
-import { SiPrisma } from "react-icons/si";
-import { SiTypescript } from "react-icons/si";
-import { SiJavascript } from "react-icons/si";
-import { SiSanity } from "react-icons/si";
-import { SiSass } from "react-icons/si";
-import { SiFirebase } from "react-icons/si";
-import { SiFigma } from "react-icons/si";
-import { SiAdobexd } from "react-icons/si";
 import {
   Drizzle,
   Next,

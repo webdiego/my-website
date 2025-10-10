@@ -5,6 +5,8 @@ import ProjectCard from "@/components/Portfolio/ProjectCard";
 import { blur } from "@animations/index";
 import { motion } from "framer-motion";
 import { ProjectsData } from "@/data/projects";
+import Link from "next/link";
+import { FolderHeart } from "lucide-react";
 
 export default function Portfolio() {
   return (
@@ -23,6 +25,16 @@ export default function Portfolio() {
         {ProjectsData.map((project) => {
           return <ProjectCard key={project.title} {...project} />;
         })}
+        <div className="flex items-center justify-center">
+          <Link
+            target="_blank"
+            href={"https://github.com/webdiego?tab=repositories"}
+            className="text-xs bg-slate-800 text-white rounded-full px-3 py-1  mr-2 flex hover:opacity-90 transition-all transform duration-300 hover:-translate-y-1 w-auto border-2 border-slate-500"
+          >
+            <span className="text-xs inline">And much more!</span>
+            <FolderHeart className="w-4 h-4 ml-1" />
+          </Link>
+        </div>
       </div>
     </motion.div>
   );
