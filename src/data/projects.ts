@@ -27,7 +27,16 @@ export const ProjectsData = [
     company: "Blhack",
     tags: ["React Native", "React Navigation", "GraphQL", "Apollo Client"],
   },
-
+  {
+    title: "React Documentation",
+    description:
+      "A lightweight Raycast extension that lets developers quickly access the latest official React documentation without leaving their workflow.The project is open source and has been adopted by more than 1,800 users.",
+    link: "https://www.raycast.com/webdiego/react-docs/",
+    githubLink: "https://github.com/webdiego/raycast-react-docs",
+    template: false,
+    wip: false,
+    tags: ["React", "Raycast API", "TypeScript"],
+  },
   {
     title: "Road trip Tracker",
     description:
@@ -50,6 +59,7 @@ export const ProjectsData = [
       "Shadcn UI",
     ],
   },
+
   {
     title: "next.js-drizzle-turso",
     description:
