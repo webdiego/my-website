@@ -8,7 +8,7 @@ export default function Description() {
     <motion.div
       initial="hidden"
       animate="visible"
-      transition={{ duration: 1, delay: 1.5 }}
+      transition={{ duration: 1, delay: 1 }}
       variants={blur}
     >
       <p>
@@ -23,9 +23,8 @@ export default function Description() {
         working remotely.
       </p>
       <p className="mt-2">
-        I&apos;ve been working professionally for the last three years mostly in
-        the
-        <span className="font-bold"> Javascript </span> ecosystem; the craziest
+        I&apos;ve been working professionally in the
+        <span className="font-bold"> Javascript </span> ecosystem - the craziest
         and most exciting one.
       </p>
       <p className="mt-2">
