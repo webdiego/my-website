@@ -1,9 +1,42 @@
 export const ProjectsData = [
   {
+    title: "Personal trainer Website - Personal Branding with Next.js & Sanity",
+    description:
+      "Personal website built with Next.js and Sanity as headless CMS, showcasing a modern design with Tailwind CSS, TypeScript, and optimized performance. Includes modular component architecture and CMS-driven content to support future scalability.The project also integrates Cal.com to manage meeting scheduling directly from the site, enhancing the user’s ability to book calls.",
+    link: "https://samu-indol.vercel.app/",
+    githubLink: "https://github.com/webdiego/samuele-website",
+    wip: true,
+    tags: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Sanity.io",
+      "Cal",
+    ],
+  },
+  {
+    title: "POC: Email & Social Login with Better Auth",
+    description:
+      "Proof of concept exploring Better Auth, a modern authentication library for Next.js.The project demonstrates email-based login and social authentication with Google and GitHub.",
+    link: "https://poc-better-auth.vercel.app/",
+    githubLink: "https://github.com/webdiego/poc-better-auth",
+    wip: true,
+    tags: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Resend",
+      "Better Auth",
+      "Shadcn UI",
+    ],
+  },
+  {
     title: "Chat with pdf",
     description:
       "In this project, I developed an application that allows users to upload a PDF and ask questions about its content. The application uses the OpenAI API to process and analyze the document.",
-    link: "https://chat-with-pdf-opal.vercel.app//",
+    link: "https://chat-with-pdf-opal.vercel.app/",
     githubLink: "https://github.com/webdiego/chat-with-pdf",
     wip: false,
     tags: [

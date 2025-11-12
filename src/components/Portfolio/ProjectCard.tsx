@@ -27,26 +27,28 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div className="rounded-md p-5 bg-gradient-to-l from-slate-100  to-slate-200">
-      <div className="flex items-center">
+      <div className="flex flex-col items-start">
+        <div className="mb-2">
+          {template && (
+            <span className=" text-xs bg-blue-100 text-blue-800 px-2 py-.5 rounded-md flex items-center">
+              <BookDashed className="w-4 h-4 mr-1" />
+              Template
+            </span>
+          )}
+          {wip && (
+            <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-md flex items-center">
+              <Hammer className="w-4 h-4 mr-1" />
+              <span className="text-xs">Work in Progress</span>
+            </span>
+          )}
+          {company && (
+            <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-md flex items-center">
+              <Building className="w-4 h-4 mr-1" />
+              {company}
+            </span>
+          )}
+        </div>
         <h3 className="font-medium text-lg">{title}</h3>
-        {template && (
-          <span className="ml-2 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-md flex items-center">
-            <BookDashed className="w-4 h-4 mr-1" />
-            Template
-          </span>
-        )}
-        {wip && (
-          <span className="ml-2 text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-md flex items-center">
-            <Hammer className="w-4 h-4 mr-1" />
-            <span className="text-xs">Work in Progress</span>
-          </span>
-        )}
-        {company && (
-          <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-1 rounded-md flex items-center">
-            <Building className="w-4 h-4 mr-1" />
-            {company}
-          </span>
-        )}
       </div>
       <p className="text-sm">{description}</p>
 
