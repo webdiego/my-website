@@ -10,30 +10,35 @@ export default function Description() {
       animate="visible"
       transition={{ duration: 1, delay: 1 }}
       variants={blur}
+      className="space-y-2 leading-relaxed text-sm"
     >
       <p>
         Hello, my name is <span className="font-bold">Diego</span> and I&apos;m
         an Italian web and mobile developer.
       </p>
-      <p className="mt-2 ">
+      <p>
         I&apos;m currently based in <span className="font-bold">Italy </span>
         and I&apos;ve also lived in <span className="font-bold">Spain </span> ,
         <span className="font-bold"> New Zealand </span> and in{" "}
         <span className="font-bold">Australia</span> in the past years and I 🧡
         working remotely.
       </p>
-      <p className="mt-2">
+      <p>
         I&apos;ve been working professionally in the
         <span className="font-bold"> Javascript </span> ecosystem - the craziest
         and most exciting one.
       </p>
-      <p className="mt-2">
+      <p>
         I&apos;m mainly focused on the front-end side but I&apos;ve been so
         curious also about the back-end side thanks to{" "}
         <span className="font-bold"> Next.js</span>, my favorite framework, that
         gave me the possibility to watch outside the &quot;fence&quot;.
       </p>
-      <p className="mt-2">
+      <p>
+        Lately I&apos;ve been exploring <span className="font-bold">AI</span>{" "}
+        too, both building LLM-powered features and using it to work better.
+      </p>
+      <p>
         So, my goal is to have an overall knowledge of the web development
         world, both front-end and back-end aspects and start to contribute to
         open source projects and enjoy the journey.

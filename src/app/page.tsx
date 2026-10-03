@@ -4,12 +4,13 @@ import Description from "@components/Description";
 import Contacts from "@components/Contacts/index";
 import Technologies from "@components/Technologies";
 import Portfolio from "@/components/Portfolio";
+import AI from "@/components/AI";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Diego Massarini - Frontend Developer",
+  title: "Diego Massarini - Frontend & AI Developer",
   description:
-    "I'm a Frontend Developer based in Italy, I'm passionate about web development and I love to create beautiful and functional websites. I'm always open to new opportunities, feel free to contact me!",
+    "I'm a Frontend Developer based in Italy, passionate about web development and AI-powered products. I love to create beautiful and functional websites. I'm always open to new opportunities, feel free to contact me!",
 };
 
 export default function Home() {
@@ -44,6 +45,7 @@ export default function Home() {
         <div className="lg:mt-10 min-h-screen h-full lg:py-16 flex flex-col w-full lg:w-4/6 lg:px-5 max-w-5xl mr-auto">
           <Description />
           <Technologies />
+          <AI />
           <Portfolio />
           <Contacts />
         </div>

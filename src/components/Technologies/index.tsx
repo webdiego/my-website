@@ -1,12 +1,10 @@
 "use client";
-import React from "react";
 import { motion } from "framer-motion";
 import { blur } from "@animations/index";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { dataTech } from "../../data/technologies";
 
 export default function Technologies() {
-  const [showTooltip, setShowTooltip] = React.useState(false);
   return (
     <motion.div
       initial="hidden"
@@ -19,15 +17,12 @@ export default function Technologies() {
       <p className="text-slate-500">These are some technologies I use</p>
       <div className="w-full mt-5">
         <ScrollingCarousel>
-          {dataTech.map((item, index) => (
+          {dataTech.map((item) => (
             <div
               key={item.name}
               className="flex flex-col items-center group relative mb-5"
-              onClick={() => setShowTooltip(true)}
-              onKeyDown={() => setShowTooltip(true)}
             >
               <div
-                key={item.name}
                 className={`w-24 h-24 ${item.background} rounded-md flex items-center justify-center mr-10`}
               >
                 {item.icon}
@@ -35,11 +30,6 @@ export default function Technologies() {
               <span className="absolute -bottom-4 scale-0 rounded bg-gray-800 p-1.5 text-xs text-white group-hover:scale-100">
                 {item.name}
               </span>
-              {showTooltip && (
-                <span className="absolute -bottom-4 scale-0 rounded bg-gray-800 p-1.5 text-xs text-white group-hover:scale-100">
-                  {item.name}
-                </span>
-              )}
             </div>
           ))}
         </ScrollingCarousel>

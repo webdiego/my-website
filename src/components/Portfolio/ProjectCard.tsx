@@ -1,8 +1,5 @@
 import React from "react";
-import { BookDashed, Building } from "lucide-react";
-import { Hammer } from "lucide-react";
-import { Github } from "lucide-react";
-import { Globe } from "lucide-react";
+import { BookDashed, Building, Github, Globe, Hammer } from "lucide-react";
 
 type ProjectCardProps = {
   title: string;
@@ -25,65 +22,72 @@ export default function ProjectCard({
   template = false,
   wip = false,
 }: ProjectCardProps) {
+  const badgeClass =
+    "text-xs px-2 py-1 rounded-md flex items-center gap-1 font-medium";
+  const linkClass =
+    "text-xs bg-slate-800 text-white rounded-full px-3 py-1.5 flex items-center gap-1 transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-700";
+
   return (
-    <div className="rounded-md p-5 bg-gradient-to-l from-slate-100  to-slate-200">
-      <div className="flex flex-col items-start">
-        <div className="mb-2">
+    <article className="rounded-lg p-5 bg-gradient-to-l from-slate-100 to-slate-200 border border-slate-200 flex flex-col">
+      {(template || wip || company) && (
+        <div className="mb-3 flex flex-wrap gap-2">
           {template && (
-            <span className=" text-xs bg-blue-100 text-blue-800 px-2 py-.5 rounded-md flex items-center">
-              <BookDashed className="w-4 h-4 mr-1" />
+            <span className={`${badgeClass} bg-blue-100 text-blue-800`}>
+              <BookDashed className="w-4 h-4" />
               Template
             </span>
           )}
           {wip && (
-            <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-md flex items-center">
-              <Hammer className="w-4 h-4 mr-1" />
-              <span className="text-xs">Work in Progress</span>
+            <span className={`${badgeClass} bg-yellow-100 text-yellow-800`}>
+              <Hammer className="w-4 h-4" />
+              Work in Progress
             </span>
           )}
           {company && (
-            <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-md flex items-center">
-              <Building className="w-4 h-4 mr-1" />
+            <span className={`${badgeClass} bg-green-100 text-green-800`}>
+              <Building className="w-4 h-4" />
               {company}
             </span>
           )}
         </div>
-        <h3 className="font-medium text-lg">{title}</h3>
-      </div>
-      <p className="text-sm">{description}</p>
+      )}
+      <h3 className="font-semibold text-lg tracking-tight">{title}</h3>
+      <p className="mt-1 text-sm text-slate-600 leading-relaxed">
+        {description}
+      </p>
 
-      <div className="flex flex-wrap mt-2 gap-2">
-        {tags.map((tag, index) => (
-          <div
+      <ul className="flex flex-wrap mt-3 gap-1.5">
+        {tags.map((tag) => (
+          <li
             key={tag}
-            className="bg-slate-400 text-white px-2 py-1 rounded-md text-xs mr-2s"
+            className="bg-slate-800/80 text-white px-2 py-0.5 rounded-md text-xs"
           >
             {tag}
-          </div>
+          </li>
         ))}
-      </div>
-      <div className="flex  self-end mt-6">
+      </ul>
+      <div className="flex mt-5 gap-2">
         {githubLink && (
           <a
             href={githubLink}
-            className="text-xs bg-gray-800 text-white rounded-full px-3 py-1  mr-2 flex hover:opacity-90 transition-all transform duration-300 hover:-translate-y-1"
+            className={linkClass}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="text-xs inline">View on GitHub</span>
-            <Github className="w-4 h-4 ml-1" />
+            GitHub
+            <Github className="w-4 h-4" />
           </a>
         )}
         <a
           href={link}
-          className="text-xs bg-gray-800 text-white rounded-full px-3 py-1 flex hover:opacity-90 transition-all transform duration-300 hover:-translate-y-1"
+          className={linkClass}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span className="text-xs inline">Live Demo</span>
-          <Globe className="w-4 h-4 ml-1" />
+          Live Demo
+          <Globe className="w-4 h-4" />
         </a>
       </div>
-    </div>
+    </article>
   );
 }
