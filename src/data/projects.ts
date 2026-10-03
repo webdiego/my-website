@@ -2,7 +2,7 @@ export const ProjectsData = [
   {
     title: "Personal trainer Website - Personal Branding with Next.js & Sanity",
     description:
-      "Personal website built with Next.js and Sanity as headless CMS, showcasing a modern design with Tailwind CSS, TypeScript, and optimized performance. Includes modular component architecture and CMS-driven content to support future scalability.The project also integrates Cal.com to manage meeting scheduling directly from the site, enhancing the user’s ability to book calls.",
+      "Personal branding website for a personal trainer, built with Next.js, TypeScript and Tailwind CSS. Content is managed through Sanity as a headless CMS, so it can grow without touching the code. Cal.com is integrated to let visitors book a call directly from the site.",
     link: "https://samu-indol.vercel.app/",
     githubLink: "https://github.com/webdiego/samuele-website",
     wip: true,
@@ -18,7 +18,7 @@ export const ProjectsData = [
   {
     title: "POC: Email & Social Login with Better Auth",
     description:
-      "Proof of concept exploring Better Auth, a modern authentication library for Next.js.The project demonstrates email-based login and social authentication with Google and GitHub.",
+      "Proof of concept exploring Better Auth, a modern authentication library for Next.js. It covers email login and social sign-in with Google and GitHub, with transactional emails sent through Resend.",
     link: "https://poc-better-auth.vercel.app/",
     githubLink: "https://github.com/webdiego/poc-better-auth",
     wip: true,
@@ -35,7 +35,7 @@ export const ProjectsData = [
   {
     title: "Chat with pdf",
     description:
-      "In this project, I developed an application that allows users to upload a PDF and ask questions about its content. The application uses the OpenAI API to process and analyze the document.",
+      "Upload a PDF and ask questions about its content. The app uses the OpenAI API and the Vercel AI SDK to analyze the document and stream answers in a chat interface.",
     link: "https://chat-with-pdf-opal.vercel.app/",
     githubLink: "https://github.com/webdiego/chat-with-pdf",
     wip: false,
@@ -53,7 +53,7 @@ export const ProjectsData = [
   {
     title: "GS Loft",
     description:
-      "GS Loft is a mobile app for a gym, built with React Native. It allows gym members to access their membership details and view their workout plans. This project was developed at Blhack, the company I worked for.",
+      "Mobile app for a gym, built with React Native. Members can check their membership details and follow their workout plans. Developed at Blhack, the company I worked for.",
     link: "https://apps.apple.com/it/app/gs-loft/id1585127524",
     githubLink: null,
     wip: false,
@@ -63,7 +63,7 @@ export const ProjectsData = [
   {
     title: "React Documentation",
     description:
-      "A lightweight Raycast extension that lets developers quickly access the latest official React documentation without leaving their workflow.The project is open source and has been adopted by more than 1,800 users.",
+      "A lightweight Raycast extension to search the official React documentation without leaving your workflow. Open source and used by more than 1,800 people.",
     link: "https://www.raycast.com/webdiego/react-docs/",
     githubLink: "https://github.com/webdiego/raycast-react-docs",
     template: false,
@@ -73,7 +73,7 @@ export const ProjectsData = [
   {
     title: "Road trip Tracker",
     description:
-      "In this project, I built a full-stack application that allows users to create trips and track their expenses. I'm implementing user authentication using NextAuth.",
+      "Full-stack app to plan trips and track their expenses, with user authentication handled by NextAuth.",
     link: "https://roadtrip-tracker.vercel.app/",
     githubLink: "https://github.com/webdiego/roadtrip",
     wip: true,
@@ -96,7 +96,7 @@ export const ProjectsData = [
   {
     title: "next.js-drizzle-turso",
     description:
-      "This project is a boilerplate for building Next.js applications with Drizzle ORM and Turso as the database. It provides a basic template to start building their applications quickly.",
+      "A starter template for Next.js apps using Drizzle ORM and Turso as the database, to get a new project up and running quickly.",
     link: "https://drizzle-turso.vercel.app/",
     githubLink: "https://github.com/webdiego/next.js-drizzle-turso",
     template: true,
@@ -113,7 +113,7 @@ export const ProjectsData = [
   {
     title: "Alberobello Restaurant website",
     description:
-      "This is a website for a restaurant called Alberobello, built with Next.js, Tailwind CSS, and TypeScript. It showcases a modern design and responsive layout and It uses the Notion API to fetch content dynamically for the menu.",
+      "Responsive website for an Italian restaurant, built with Next.js, Tailwind CSS and TypeScript. The menu is fetched dynamically from the Notion API, so the owner can update it without a developer.",
     link: "https://alberobello-restaurant.vercel.app/",
     wip: false,
     githubLink: "https://github.com/webdiego/alberobello-restaurant",

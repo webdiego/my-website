@@ -13,35 +13,28 @@ export default function Description() {
       className="space-y-2 leading-relaxed text-sm"
     >
       <p>
-        Hello, my name is <span className="font-bold">Diego</span> and I&apos;m
-        an Italian web and mobile developer.
+        Hi, I&apos;m <span className="font-bold">Diego</span>, an Italian web
+        and mobile developer who loves building fast, polished products.
       </p>
       <p>
-        I&apos;m currently based in <span className="font-bold">Italy </span>
-        and I&apos;ve also lived in <span className="font-bold">Spain </span> ,
-        <span className="font-bold"> New Zealand </span> and in{" "}
-        <span className="font-bold">Australia</span> in the past years and I 🧡
-        working remotely.
+        I&apos;m based in <span className="font-bold">Italy</span>, and
+        I&apos;ve also lived in <span className="font-bold">Spain</span>,{" "}
+        <span className="font-bold">New Zealand</span> and{" "}
+        <span className="font-bold">Australia</span>. I 🧡 working remotely.
       </p>
       <p>
-        I&apos;ve been working professionally in the
-        <span className="font-bold"> Javascript </span> ecosystem - the craziest
-        and most exciting one.
+        I work in the <span className="font-bold">JavaScript</span> ecosystem,
+        mostly on the front end. <span className="font-bold">Next.js</span>, my
+        favorite framework, pulled me towards the back end too, and I enjoy
+        owning a feature from the UI to the database.
       </p>
       <p>
-        I&apos;m mainly focused on the front-end side but I&apos;ve been so
-        curious also about the back-end side thanks to{" "}
-        <span className="font-bold"> Next.js</span>, my favorite framework, that
-        gave me the possibility to watch outside the &quot;fence&quot;.
+        Lately I&apos;ve been exploring <span className="font-bold">AI</span>:
+        building LLM-powered features and using it to work better every day.
       </p>
       <p>
-        Lately I&apos;ve been exploring <span className="font-bold">AI</span>{" "}
-        too, both building LLM-powered features and using it to work better.
-      </p>
-      <p>
-        So, my goal is to have an overall knowledge of the web development
-        world, both front-end and back-end aspects and start to contribute to
-        open source projects and enjoy the journey.
+        My goal is to keep growing as a well-rounded web developer and to
+        contribute to open source along the way.
       </p>
     </motion.div>
   );
