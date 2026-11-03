@@ -1,14 +1,14 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { AuroraBackground } from "@/components/AuroraBackground";
 import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
 
 export const metadata = {
   title: "Diego Massarini",
-  description: "Web | Mobile developer",
+  description: "Curious developer",
 };
 
 export default function RootLayout({
@@ -18,8 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${mono.variable}`}>
         {children}
+        <div className="grain" aria-hidden />
         <Analytics />
         <SpeedInsights />
 

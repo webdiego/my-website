@@ -1,44 +1,6 @@
-import LinkedinIcon from "@public/contacts/linkedin.svg";
-import GithubIcon from "@public/contacts/github.svg";
-import SoundCloudIcon from "@public/contacts/soundCloud.svg";
-import XIcon from "@public/contacts/x.svg";
 export const contacts = [
-  {
-    name: "X",
-    color: "rgb(36, 41, 46)",
-    background: "#fff",
-    image: XIcon,
-    description: "The place where I post and read random weird/tech stuff",
-    button: "Follow me",
-    url: "https://x.com/slicecodediego",
-  },
-
-  {
-    name: "GitHub",
-    color: "rgb(36, 41, 46)",
-    background: "rgb(36, 41, 46, .05)",
-    image: GithubIcon,
-    description: "The place where I can explore and learn",
-    button: "Follow me",
-    url: "https://github.com/webdiego",
-  },
-  {
-    name: "SoundCloud",
-    color: "rgb(255, 51, 0)",
-    background: "rgb(255, 51, 0, .1)",
-    image: SoundCloudIcon,
-    description: "Where I can turn off my brain and enjoy some musical notes",
-    button: "Follow me",
-    url: "https://soundcloud.com/diego-massarini",
-  },
-
-  {
-    name: "LinkedIn",
-    color: "rgb(0, 119, 181)",
-    background: "rgb(0, 119, 181, .1)",
-    button: "Follow me",
-    image: LinkedinIcon,
-    description: "Where I'm supposed to be professional and read drama posts",
-    url: "https://www.linkedin.com/in/diego-massarini/",
-  },
+  { name: "GitHub", url: "https://github.com/webdiego" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/diego-massarini/" },
+  { name: "Twitter / 𝕏", url: "https://x.com/slicecodediego" },
+  { name: "SoundCloud", url: "https://soundcloud.com/diego-massarini" },
 ];

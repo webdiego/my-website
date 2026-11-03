@@ -1,55 +1,25 @@
-import Head from "next/head";
-import Me from "@components/Me";
-import Description from "@components/Description";
-import Contacts from "@components/Contacts/index";
-import Technologies from "@components/Technologies";
-import Portfolio from "@/components/Portfolio";
-import AI from "@/components/AI";
-import type { Metadata } from "next";
+import Hero from "@/components/Hero";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
-  title: "Diego Massarini - Frontend & AI Developer",
+  title: "Diego Massarini",
   description:
-    "I'm a Frontend Developer based in Italy, passionate about web development and AI-powered products. I love to create beautiful and functional websites. I'm always open to new opportunities, feel free to contact me!",
+    "Diego Massarini: Italian developer driven by curiosity, creativity and an eye for details.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
+    other: { rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#fff" },
+  },
+  manifest: "/site.webmanifest",
+  other: { "msapplication-TileColor": "#12110f" },
 };
 
-export default function Home() {
-  return (
-    <>
-      <Head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#fff" />
-        <meta name="msapplication-TileColor" content="#fff" />
-        <meta name="theme-color" content="#ffffff" />
-      </Head>
+export const viewport: Viewport = { themeColor: "#12110f" };
 
-      <div className="flex min-h-screen h-full w-full max-w-7xl mx-auto flex-col items-start px-6 lg:flex-row justify-between lg:px-16 text-slate-800">
-        <Me />
-        <div className="lg:mt-10 min-h-screen h-full lg:py-16 flex flex-col w-full lg:w-4/6 lg:px-5 max-w-5xl mr-auto">
-          <Description />
-          <Technologies />
-          <AI />
-          <Portfolio />
-          <Contacts />
-        </div>
-      </div>
-    </>
-  );
+export default function Home() {
+  return <Hero />;
 }
