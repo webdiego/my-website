@@ -142,6 +142,57 @@ function Word({
   );
 }
 
+const CLIENTS = ["Untamed", "Independent clients"];
+const EMAIL = "webdiegomassarini@gmail.com";
+// URLSearchParams encodes spaces as "+", which mail apps show literally: build the query by hand
+const MAIL_PARAMS = `subject=${encodeURIComponent("Hello Diego")}&body=${encodeURIComponent(
+  "Hi Diego,\n\nI came across your website and I'd like to talk about...\n\n",
+)}`;
+
+function ScrambleIn({ text }: { text: string }) {
+  const [shown, scramble] = useScramble(text);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- play once per mount, the key swaps the text
+  useEffect(scramble, []);
+  return <Stable text={text} shown={shown} />;
+}
+
+// cycles through CLIENTS with the same scramble as the hover; reduced motion keeps the first one
+function Clients() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setInterval(() => setI((n) => (n + 1) % CLIENTS.length), 2800);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <>
+      <span className="sr-only">{CLIENTS.join(", ")}</span>
+      <span className="text-bone">
+        <ScrambleIn key={i} text={CLIENTS[i]} />
+      </span>
+    </>
+  );
+}
+
+// mailto does nothing without a configured mail app, so the address is also copied
+function GetInTouch() {
+  const [copied, setCopied] = useState(false);
+  return (
+    <a
+      href={`mailto:${EMAIL}?${MAIL_PARAMS}`}
+      onClick={() => {
+        navigator.clipboard?.writeText(EMAIL).then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        }, () => {});
+      }}
+      className="text-bone underline decoration-dotted underline-offset-4 hover:no-underline"
+    >
+      <span aria-live="polite">{copied ? "Email copied" : "Get in touch"}</span>
+    </a>
+  );
+}
+
 function LinkPill({ name, url }: { name: string; url: string }) {
   const [text, scramble] = useScramble(name);
   return (
@@ -224,11 +275,17 @@ export default function Hero() {
             </span>{" "}
             <Word id="creativity" current={current} onChange={changeMood}>
               creativity
-            </Word> and a slightly unhealthy eye for{" "}
+            </Word> and a picky eye for{" "}
             <Word id="details" current={current} onChange={changeMood}>
               details
             </Word>
             <Readout />
+          </p>
+          <p className="reveal mt-6 font-mono text-[11px] uppercase leading-relaxed tracking-wider text-mute" style={order(1)}>
+            Currently working with <Clients />
+            <br />
+            Based in Italy · Open to freelance ·{" "}
+            <GetInTouch />
           </p>
 
         </div>
