@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
     other: { rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#fff" },
   },
+  // share cards (LinkedIn, X, Slack); the image itself comes from app/opengraph-image.jpg
+  openGraph: {
+    type: "website",
+    title: "Diego Massarini",
+    description: "Developer driven by curiosity, creativity and an eye for details.",
+    siteName: "Diego Massarini",
+  },
+  twitter: { card: "summary_large_image" },
   manifest: "/site.webmanifest",
   other: { "msapplication-TileColor": "#12110f" },
 };

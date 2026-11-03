@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-lostar: "lostar";
-  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-mono: var(--font-departure), ui-monospace, monospace;
   --color-ink: #12110f;
   --color-bone: #e9e4da;
   --color-mute: #8a857b;
@@ -21,18 +21,15 @@ body {
   background: var(--color-ink);
 }
 
+/* taps should feel like buttons, not flash a grey box */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 ::selection {
   background: var(--color-bone);
   color: var(--color-ink);
-}
-
-@layer base {
-  @font-face {
-    font-family: "lostar";
-    font-display: swap;
-    font-weight: normal;
-    src: url("/fonts/Lostar.woff2");
-  }
 }
 
 /* film grain over everything, the underground texture */

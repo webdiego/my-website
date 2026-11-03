@@ -1,11 +1,13 @@
 "use client";
-import { Component, useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { Component, memo, useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { ArrowUpRight, CornerDownRight } from "lucide-react";
 import dynamic from "next/dynamic";
 import { contacts } from "@/data/contacts";
 import { mood, type Mood } from "./mood";
 
 // WebGL is client-only; rendering it on the server causes hydration mismatches
-const Scene = dynamic(() => import("./Scene"), { ssr: false });
+// memo: the hovered word lives in Hero state, and that must not re-render the 3D tree
+const Scene = memo(dynamic(() => import("./Scene"), { ssr: false }));
 
 // no WebGL (old browser, blocked GPU) makes the canvas throw: keep the page, lose only the 3D
 class SceneBoundary extends Component<{ onError: () => void; children: ReactNode }, { failed: boolean }> {
@@ -52,9 +54,10 @@ function Readout() {
   }, []);
 
   return (
-    <span className="ml-2 inline-block align-top font-mono text-[10px] leading-tight text-mute">
+    <span className="ml-2 inline-block align-top font-mono text-[11px] leading-tight text-mute">
       {pad(size.w)} × {pad(size.h)}
-      <br />↳ {pad(fps, 3)} FPS
+      <br />
+      <CornerDownRight className="inline h-[1em] w-[1em] align-[-0.1em]" aria-hidden /> {pad(fps, 3)} FPS
     </span>
   );
 }
@@ -97,28 +100,41 @@ function Stable({ text, shown }: { text: string; shown: string }) {
   );
 }
 
-function Word({ id, children }: { id: Mood; children: string }) {
-  const [active, setActive] = useState(false);
+// behaves like a toggle button: mouse hover previews it, a tap or Enter switches it on/off
+function Word({
+  id,
+  current,
+  onChange,
+  children,
+}: {
+  id: Mood;
+  current: Mood;
+  onChange: (m: Mood) => void;
+  children: string;
+}) {
+  const active = current === id;
   const [text, scramble] = useScramble(children);
-  const on = () => {
-    mood.current = id;
-    setActive(true);
-    scramble();
-  };
-  const off = () => {
-    if (mood.current === id) mood.current = "idle";
-    setActive(false);
-  };
+  const pointer = useRef("");
+  useEffect(() => {
+    if (active) scramble();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- replay only when switching on
+  }, [active]);
+
   return (
     <button
       type="button"
-      onPointerEnter={on}
-      onPointerLeave={off}
-      onFocus={on}
-      onBlur={off}
-      className="cursor-crosshair border-b border-dotted border-current leading-none transition-colors duration-300"
-      style={{ color: active ? `var(--color-${id})` : undefined }}
+      aria-pressed={active}
       aria-label={children}
+      onPointerDown={(e) => (pointer.current = e.pointerType)}
+      onPointerEnter={(e) => e.pointerType === "mouse" && onChange(id)}
+      onPointerLeave={(e) => e.pointerType === "mouse" && active && onChange("idle")}
+      onClick={() => {
+        // a mouse click lands on a word that hover already switched on: leave it
+        if (pointer.current !== "mouse") onChange(active ? "idle" : id);
+        pointer.current = "";
+      }}
+      className="cursor-crosshair select-none touch-manipulation font-serif text-[1.12em] italic border-b border-dotted border-current leading-none transition-[color,scale] duration-300 active:scale-95"
+      style={{ color: active ? `var(--color-${id})` : undefined }}
     >
       <Stable text={children} shown={text} />
       <sup className="ml-0.5 text-[0.5em] text-mute">°</sup>
@@ -136,12 +152,13 @@ function LinkPill({ name, url }: { name: string; url: string }) {
       aria-label={name}
       onPointerEnter={scramble}
       onFocus={scramble}
-      className="group flex items-center gap-2 rounded-full border border-dashed border-bone/30 bg-ink/40 px-4 py-1.5 font-mono text-xs backdrop-blur-sm transition-all duration-300 hover:-translate-x-1 hover:border-solid hover:border-bone hover:bg-bone hover:text-ink"
+      className="group flex select-none items-center justify-between gap-3 rounded-full border border-dashed border-bone/30 bg-ink/40 px-4 py-2.5 font-mono text-[11px] backdrop-blur-sm transition-all duration-300 active:bg-bone active:text-ink md:py-1.5 md:hover:-translate-x-1 md:hover:border-solid md:hover:border-bone md:hover:bg-bone md:hover:text-ink"
     >
       <Stable text={name} shown={text} />
-      <span className="inline-block transition-transform duration-300 group-hover:rotate-45" aria-hidden>
-        ↗
-      </span>
+      <ArrowUpRight
+        className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        aria-hidden
+      />
     </a>
   );
 }
@@ -156,6 +173,11 @@ const MAX_INTRO_MS = 6000;
 export default function Hero() {
   const [ready, setReady] = useState(false);
   const [no3d, setNo3d] = useState(false);
+  const [current, setCurrent] = useState<Mood>("idle");
+  const changeMood = useCallback((m: Mood) => {
+    mood.current = m;
+    setCurrent(m);
+  }, []);
   const onSceneError = useCallback(() => {
     setNo3d(true);
     setReady(true);
@@ -196,21 +218,22 @@ export default function Hero() {
           <p className="reveal text-3xl leading-tight md:text-4xl" style={order(1)}>
             I&apos;m a developer driven by{" "}
             <span className="whitespace-nowrap">
-              <Word id="curiosity">curiosity</Word>,
+              <Word id="curiosity" current={current} onChange={changeMood}>
+              curiosity
+            </Word>,
             </span>{" "}
-            <Word id="creativity">creativity</Word> and a slightly unhealthy eye for{" "}
-            <Word id="details">details</Word>
+            <Word id="creativity" current={current} onChange={changeMood}>
+              creativity
+            </Word> and a slightly unhealthy eye for{" "}
+            <Word id="details" current={current} onChange={changeMood}>
+              details
+            </Word>
             <Readout />
           </p>
 
-          <p className="reveal mt-6 font-mono text-[11px] uppercase leading-relaxed tracking-wider text-mute" style={order(2)}>
-            Italy → Spain → New Zealand → Australia → ?
-            <br />
-            Hover or tap the words above
-          </p>
         </div>
 
-        <nav aria-label="Links" className="reveal flex flex-wrap gap-2 md:flex-col md:items-end" style={order(3)}>
+        <nav aria-label="Links" className="reveal grid grid-cols-2 gap-2 md:flex md:flex-col md:items-end" style={order(2)}>
           {contacts.map((c) => (
             <LinkPill key={c.name} {...c} />
           ))}

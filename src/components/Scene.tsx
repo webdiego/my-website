@@ -240,7 +240,9 @@ function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
     if (!g) return;
     const fit = Math.min(1, viewport.width / 4.2);
     // stays hidden until the page says go, then grows in
-    g.scale.setScalar(THREE.MathUtils.damp(g.scale.x, ready ? fit * l.zoom : 0.001, 4, dt));
+    // zooming in (details) must still fit the screen width: the mark is 3.2 units wide at scale 1
+    const zoomed = Math.min(fit * l.zoom, (viewport.width * 0.92) / 3.2);
+    g.scale.setScalar(THREE.MathUtils.damp(g.scale.x, ready ? zoomed : 0.001, 4, dt));
     g.rotation.y = THREE.MathUtils.damp(g.rotation.y, pointer.x * l.tilt + Math.sin(l.t * 1.3) * l.wobble, 4, dt);
     g.rotation.x = THREE.MathUtils.damp(g.rotation.x, -pointer.y * l.tilt * 0.6 + Math.cos(l.t * 1.1) * l.wobble * 0.5, 4, dt);
     g.rotation.z = Math.sin(l.t * 0.9) * l.wobble * 0.15;
