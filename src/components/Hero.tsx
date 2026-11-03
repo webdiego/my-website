@@ -54,7 +54,7 @@ function Readout() {
   }, []);
 
   return (
-    <span className="ml-2 inline-block align-top font-mono text-[11px] leading-tight text-mute">
+    <span className="ml-2 hidden align-top font-mono text-[11px] leading-tight text-mute md:inline-block">
       {pad(size.w)} × {pad(size.h)}
       <br />
       <CornerDownRight className="inline h-[1em] w-[1em] align-[-0.1em]" aria-hidden /> {pad(fps, 3)} FPS
@@ -203,11 +203,11 @@ function LinkPill({ name, url }: { name: string; url: string }) {
       aria-label={name}
       onPointerEnter={scramble}
       onFocus={scramble}
-      className="group flex select-none items-center justify-between gap-3 rounded-full border border-dashed border-bone/30 bg-ink/40 px-4 py-2.5 font-mono text-[11px] backdrop-blur-sm transition-all duration-300 active:bg-bone active:text-ink md:py-1.5 md:hover:-translate-x-1 md:hover:border-solid md:hover:border-bone md:hover:bg-bone md:hover:text-ink"
+      className="group flex select-none items-center justify-between gap-1 py-1 font-mono text-[11px] text-mute transition-all duration-300 active:text-bone md:gap-3 md:rounded-full md:border md:border-dashed md:border-bone/30 md:bg-ink/40 md:px-4 md:py-1.5 md:text-bone md:backdrop-blur-sm md:hover:-translate-x-1 md:hover:border-solid md:hover:border-bone md:hover:bg-bone md:hover:text-ink"
     >
       <Stable text={name} shown={text} />
       <ArrowUpRight
-        className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        className="h-3 w-3 shrink-0 md:h-3.5 md:w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
         aria-hidden
       />
     </a>
@@ -264,7 +264,7 @@ export default function Hero() {
         </p>
       </header>
 
-      <div className="relative z-10 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+      <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div className="max-w-xl">
           <p className="reveal text-3xl leading-tight md:text-4xl" style={order(1)}>
             I&apos;m a developer driven by{" "}
@@ -290,7 +290,7 @@ export default function Hero() {
 
         </div>
 
-        <nav aria-label="Links" className="reveal grid grid-cols-2 gap-2 md:flex md:flex-col md:items-end" style={order(2)}>
+        <nav aria-label="Links" className="reveal flex flex-wrap gap-x-5 gap-y-1 md:flex-col md:items-end md:gap-2" style={order(2)}>
           {contacts.map((c) => (
             <LinkPill key={c.name} {...c} />
           ))}
