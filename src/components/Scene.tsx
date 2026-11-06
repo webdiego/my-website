@@ -1,6 +1,6 @@
 "use client";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { Environment, Lightformer, PerformanceMonitor } from "@react-three/drei";
 import { SVGLoader } from "three/examples/jsm/loaders/SVGLoader.js";
 import * as THREE from "three";
@@ -82,14 +82,15 @@ function Crt({ ready }: { ready: boolean }) {
     [],
   );
 
-  const readyAt = useRef(-1);
+  const boot = useRef(-1);
 
-  useFrame(({ clock, pointer, size }) => {
+  useFrame(({ clock, pointer, size }, dt) => {
     const u = material.current?.uniforms;
     if (!u) return;
     u.uTime.value = clock.elapsedTime;
-    if (ready && readyAt.current < 0) readyAt.current = clock.elapsedTime;
-    u.uBoot.value = readyAt.current < 0 ? -1 : clock.elapsedTime - readyAt.current;
+    // capped step: one slow frame (shader compile, tab switch) must not skip the power-on
+    if (ready) boot.current = Math.max(0, boot.current) + Math.min(dt, 1 / 30);
+    u.uBoot.value = boot.current;
     u.uRes.value.set(size.width, size.height);
     u.uMouse.value.lerp(new THREE.Vector2(pointer.x * 0.5 + 0.5, pointer.y * 0.5 + 0.5), 0.03);
     u.uColor.value.lerp(target.set(moods[mood.current].color), 0.05);
@@ -243,9 +244,11 @@ function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
     return () => worker.terminate();
   }, [svg]);
 
+  // compile the (heavy) chrome shader before saying go, or its first frame freezes the intro
+  const { gl, scene, camera } = useThree();
   useEffect(() => {
-    if (dm) onLoaded();
-  }, [dm, onLoaded]);
+    if (dm) gl.compileAsync(scene, camera).then(onLoaded, onLoaded);
+  }, [dm, onLoaded, gl, scene, camera]);
 
   // the particles reuse the mesh's own vertex buffer: no extra memory
   const particles = useMemo(() => {
@@ -333,8 +336,11 @@ function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
       <mesh
         ref={solid}
         {...meshProps}
-        onPointerOver={() => (hovered.current = true)}
-        onPointerOut={() => (hovered.current = false)}
+        onPointerOver={(e) => e.pointerType === "mouse" && (hovered.current = true)}
+        onPointerOut={(e) => e.pointerType === "mouse" && (hovered.current = false)}
+        // touch has no hover: a tap on the mark toggles it, a tap anywhere else turns it off
+        onPointerDown={(e) => e.pointerType !== "mouse" && (hovered.current = !hovered.current)}
+        onPointerMissed={() => (hovered.current = false)}
       >
         <meshPhysicalMaterial
           ref={material}
