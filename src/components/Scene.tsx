@@ -155,6 +155,69 @@ const dustFragment = /* glsl */ `
   }
 `;
 
+// hover turns the chrome into terminal ASCII: the screen is cut into character cells, each picks
+// a glyph by how bright the lit chrome is there, and the gaps between strokes let the CRT through
+const GLYPHS = " .:-=+*#%@";
+
+function glyphAtlas() {
+  const canvas = document.createElement("canvas");
+  canvas.width = GLYPHS.length * 32;
+  canvas.height = 48;
+  const ctx = canvas.getContext("2d")!;
+  ctx.fillStyle = "#fff";
+  ctx.font = "bold 40px monospace";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  [...GLYPHS].forEach((c, i) => ctx.fillText(c, i * 32 + 16, 26));
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.generateMipmaps = false;
+  texture.minFilter = THREE.LinearFilter;
+  return texture;
+}
+
+// module-level: Scene only ever loads in the browser, there is one logo, and these change every frame
+const ascii = {
+  uGlyphs: { value: glyphAtlas() },
+  uAscii: { value: 0 },
+  uTime: { value: 0 },
+  uDpr: { value: 1 },
+};
+
+const asciiChunk = /* glsl */ `
+  if (uAscii > 0.001) {
+    vec2 cellSize = vec2(7.0, 11.0) * uDpr;
+    vec2 id = floor(gl_FragCoord.xy / cellSize);
+    // cells flip over one by one in random order rather than all at once
+    if (asciiHash(id) < uAscii) {
+      vec2 local = fract(gl_FragCoord.xy / cellSize);
+      float lum = dot(gl_FragColor.rgb, vec3(0.299, 0.587, 0.114));
+      // chrome sits in a narrow mid-grey band: stretch it so the reflections use the whole ramp
+      float idx = floor(clamp((lum - 0.08) * 2.6, 0.0, 0.999) * ${GLYPHS.length}.0);
+      // a few cells keep scrambling, like a terminal that never settles
+      float tick = floor(uTime * 14.0);
+      if (asciiHash(id + tick) < 0.07) idx = floor(asciiHash(id - tick) * ${GLYPHS.length}.0);
+      float ink = texture2D(uGlyphs, vec2((idx + local.x) / ${GLYPHS.length}.0, local.y)).r;
+      if (ink < 0.4) discard;
+      gl_FragColor = linearToOutputTexel(vec4(diffuseColor.rgb * (0.6 + lum), diffuseColor.a));
+    }
+  }
+`;
+
+function injectAscii(shader: THREE.WebGLProgramParametersWithUniforms) {
+  Object.assign(shader.uniforms, ascii);
+  shader.fragmentShader = shader.fragmentShader
+    .replace(
+      "#include <common>",
+      `#include <common>
+      uniform sampler2D uGlyphs;
+      uniform float uAscii;
+      uniform float uTime;
+      uniform float uDpr;
+      float asciiHash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }`,
+    )
+    .replace("#include <dithering_fragment>", `#include <dithering_fragment>\n${asciiChunk}`);
+}
+
 function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
   const svg = useLoader(SVGLoader, "/dm.svg");
   const group = useRef<THREE.Group>(null);
@@ -165,7 +228,7 @@ function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
   const dust = useRef<THREE.Points>(null);
   const dustMaterial = useRef<THREE.ShaderMaterial>(null);
   const hovered = useRef(false);
-  const live = useRef({ tilt: 0.5, wobble: 0.15, zoom: 1, puff: 0, scatter: 0, wire: 0, t: 0 });
+  const live = useRef({ tilt: 0.5, wobble: 0.15, zoom: 1, puff: 0, scatter: 0, wire: 0, ascii: 0, t: 0 });
   const target = useMemo(() => new THREE.Color(), []);
 
   const [dm, setDm] = useState<DM | null>(null);
@@ -206,8 +269,8 @@ function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
     l.tilt = ease(l.tilt, m.tilt, 4);
     l.wobble = ease(l.wobble, m.wobble);
     l.zoom = ease(l.zoom, m.zoom);
-    // hovering the mark itself inflates it a bit more
-    l.puff = ease(l.puff, Math.min(1, m.puff + (hovered.current ? 0.6 : 0)), 5);
+    l.puff = ease(l.puff, m.puff, 5);
+    l.ascii = ease(l.ascii, hovered.current ? 1 : 0, 5);
     // breaking apart is slow and dreamy, coming back together a little quicker
     l.scatter = ease(l.scatter, m.scatter, m.scatter > l.scatter ? 1.2 : 2);
     l.wire = ease(l.wire, m.wire, 4);
@@ -223,6 +286,9 @@ function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
       material.current.color.lerp(target.set(m.color), 0.06);
       material.current.opacity = (1 - l.wire * 0.75) * solidness;
       solid.current.visible = solidness > 0.01;
+      ascii.uAscii.value = l.ascii;
+      ascii.uTime.value = clock.elapsedTime;
+      ascii.uDpr.value = viewport.dpr;
     }
     if (dustMaterial.current && dust.current) {
       const u = dustMaterial.current.uniforms;
@@ -272,6 +338,7 @@ function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
       >
         <meshPhysicalMaterial
           ref={material}
+          onBeforeCompile={injectAscii}
           color={moods.idle.color}
           metalness={0.85}
           roughness={0.12}
