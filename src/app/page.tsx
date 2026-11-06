@@ -1,7 +1,10 @@
 import Hero from "@/components/Hero";
 import type { Metadata, Viewport } from "next";
+import { contacts } from "@/data/contacts";
+import { SITE_URL } from "@/data/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/" },
   title: "Diego Massarini",
   description:
     "Diego Massarini: Italian developer driven by curiosity, creativity and an eye for details.",
@@ -28,6 +31,22 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#12110f" };
 
+// lets search engines tie the name to the profiles below
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Diego Massarini",
+  url: SITE_URL,
+  jobTitle: "Frontend developer",
+  address: { "@type": "PostalAddress", addressCountry: "IT" },
+  sameAs: contacts.map((c) => c.url),
+};
+
 export default function Home() {
-  return <Hero />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
+      <Hero />
+    </>
+  );
 }

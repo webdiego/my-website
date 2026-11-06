@@ -142,7 +142,10 @@ function Word({
   );
 }
 
-const CLIENTS = ["Untamed", "Independent clients"];
+const CLIENTS: { name: string; url?: string }[] = [
+  { name: "Untamed", url: "https://www.weareuntamed.it/" },
+  { name: "Independent clients" },
+];
 const EMAIL = "webdiegomassarini@gmail.com";
 // URLSearchParams encodes spaces as "+", which mail apps show literally: build the query by hand
 const MAIL_PARAMS = `subject=${encodeURIComponent("Hello Diego")}&body=${encodeURIComponent(
@@ -164,12 +167,24 @@ function Clients() {
     const t = setInterval(() => setI((n) => (n + 1) % CLIENTS.length), 2800);
     return () => clearInterval(t);
   }, []);
+  const { name, url } = CLIENTS[i];
+  const shown = <ScrambleIn key={i} text={name} />;
   return (
     <>
-      <span className="sr-only">{CLIENTS.join(", ")}</span>
-      <span className="text-bone">
-        <ScrambleIn key={i} text={CLIENTS[i]} />
-      </span>
+      <span className="sr-only">{CLIENTS.map((c) => c.name).join(", ")}</span>
+      {url ? (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={name}
+          className="text-bone underline decoration-dotted underline-offset-4 hover:no-underline"
+        >
+          {shown}
+        </a>
+      ) : (
+        <span className="text-bone">{shown}</span>
+      )}
     </>
   );
 }

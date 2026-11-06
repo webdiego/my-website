@@ -3,17 +3,16 @@ import { Bricolage_Grotesque, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Script from "next/script";
+import type { Metadata } from "next";
+import { SITE_URL } from "@/data/site";
+
+// absolute base for share-card and canonical URLs on every route
+export const metadata: Metadata = { metadataBase: new URL(SITE_URL) };
 const sans = Bricolage_Grotesque({ subsets: ["latin"] });
 // the three hovered words: an italic serif against the grotesk makes them stand out on their own
 const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: "italic", variable: "--font-instrument" });
 // pixel mono for the small technical text, like type on the CRT behind it (OFL, see fonts/)
 const mono = localFont({ src: "./fonts/DepartureMono-Regular.woff2", variable: "--font-departure" });
-
-export const metadata = {
-  title: "Diego Massarini",
-  description: "Curious developer",
-};
 
 export default function RootLayout({
   children,
@@ -29,11 +28,6 @@ export default function RootLayout({
         <div className="grain" aria-hidden />
         <Analytics />
         <SpeedInsights />
-
-        <Script
-          src="https://analytics.eu.umami.is/script.js"
-          data-website-id="8612eba9-e3c6-4f3f-9a64-a1128144c3ba"
-        />
       </body>
     </html>
   );
