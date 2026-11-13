@@ -244,11 +244,15 @@ function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
     return () => worker.terminate();
   }, [svg]);
 
-  // compile the (heavy) chrome shader before saying go, or its first frame freezes the intro
+  // compile the (heavy) chrome shader before saying go, or its first frame freezes the intro.
+  // Mobile GPUs (iOS especially) only really link on the first draw, so also wait for a few
+  // rendered frames: the stall then lands under the boot line, not on the power-on
   const { gl, scene, camera } = useThree();
+  const warmup = useRef(-1); // frames drawn since compile, -1 = not compiled yet
   useEffect(() => {
-    if (dm) gl.compileAsync(scene, camera).then(onLoaded, onLoaded);
-  }, [dm, onLoaded, gl, scene, camera]);
+    const start = () => (warmup.current = 0);
+    if (dm) gl.compileAsync(scene, camera).then(start, start);
+  }, [dm, gl, scene, camera]);
 
   // the particles reuse the mesh's own vertex buffer: no extra memory
   const particles = useMemo(() => {
@@ -265,7 +269,10 @@ function Logo({ ready, onLoaded }: { ready: boolean; onLoaded: () => void }) {
     return { geometry, uniforms };
   }, [dm]);
 
-  useFrame(({ pointer, viewport, clock }, dt) => {
+  useFrame(({ pointer, viewport, clock }, frameDt) => {
+    if (warmup.current >= 0 && ++warmup.current === 3) onLoaded();
+    // capped like the CRT: one slow frame must not snap the grow-in to full size
+    const dt = Math.min(frameDt, 1 / 30);
     const m = moods[mood.current];
     const l = live.current;
     const ease = (from: number, to: number, speed = 3) => THREE.MathUtils.damp(from, to, speed, dt);
